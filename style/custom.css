@@ -1,0 +1,165 @@
+/*tipography*/
+
+h1{
+  font-size:6em;
+  font-weight: bold;
+  text-align:center;
+
+
+}
+
+h3{
+	text-align: center;
+
+}
+.singleQuestion h4{
+  font-size:4em;
+  font-weight: bold;
+
+
+}
+
+label h5{
+  font-size:2em;
+  font-weight:bold;
+
+}
+
+.row{
+	margin: 0;
+}
+/*++++++++++++++++++++++++++++++++question style++++++++++++++++++++++++++++*/
+
+/**structure*/
+.singleQuestion{
+  text-align:center;
+
+}
+
+/*How big is the room*/
+.x , .y{
+  min-height: 3em;
+  font-size: 3em;
+  text-align: center;
+
+
+}
+
+#goSecond, #goThird,#goForth, #goPlay{
+  width: 33%;
+  min-height: 2em;
+  font-size: 3em;
+  font-weight: bold;
+  margin-top: 1%;
+}
+/*errors msg*/
+.errorMsg, .errorMsg1{
+
+	color:rgb(255, 42, 42);
+	display:none;
+	font-size:2em;
+	font-weight:bold;
+	margin:tio:1em;
+
+}
+
+/*Second step*/
+#SecondStep{
+	display:none;
+
+}
+#Robot{
+	display:none;
+
+}
+
+
+/*Give me directions*/
+.fourthScreen{
+		display:none;
+		clear: both;
+
+}
+
+#btns3{
+	display:none;
+
+}
+#backThird{
+
+	margin-left:-1em;
+}
+
+.direction{
+	min-height: 3em;
+	font-size: 3em;
+	text-align: center;
+	text-transform: uppercase;
+
+
+}
+
+
+/*last step*/
+.afterClean{
+	display:none;
+
+
+}
+.allClean{
+	color:green;
+	display:none;
+	font-weight: bold;
+	font-size:3em;
+
+}
+
+.notClean{
+	color:red;
+	display:none;
+	font-size:3em;
+
+
+
+}
+/*++++++++++++++++++++++++++++++++room style++++++++++++++++++++++++++++*/
+/*robot*/
+
+#myRoom {
+
+  border: 1px solid black;
+  width:200px;
+  height:300px;
+
+
+}
+#roomPlace table{
+
+  width:100%;
+	min-height:30em;
+
+}
+
+td{
+  padding: 0;
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+
+}
+
+
+
+.robotPosition {
+  background-color:green;
+  border-radius:50%;
+
+
+}
+
+.dirtyPatches{
+  background-color:black;
+  border-radius:20%;
+
+
+}

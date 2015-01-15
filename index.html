@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+
+    	<title>Robotic hoover</title>
+            <meta name="keywords" content="clean, game, robot">
+            <meta name="description" content="lead your Robot to clean you room">
+    	<meta name="author" content="Ginevra Diana">
+    	<meta charset="UTF-8">
+
+        <!--Style-->
+    	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    	<link href="style/custom.css" rel="stylesheet" type="text/css">
+
+
+
+   </head>
+
+
+
+
+   <body>
+    	<div  class="row">
+
+        <!-- ++++++++++++++++++++++++++++++How big is the room?+++++++++++++++++++++++++++++++++++-->
+
+    		<div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1" id ="FirsrStep">
+
+    			<h1>Robotic hoover</h1>
+    			<h3>Lead your cybernatical robot hoover to clean your room</h3>
+
+    			  <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1" >
+
+
+
+    					<!-- room dimension input x and y and ask direction-->
+    					<div class="singleQuestion col-xs-12 col-sm-12 col-md-12">
+    					 	<h4 class="fisrtScreen" >How big is the room?</h4>
+                 <h4 class="fourthScreen" >Give me the direction</h4>
+
+                  <p class="errorMsg">You can use just number</p>
+                  <p class="fourthScreen">You can use just the letter N-noth, S-south, W-west, E-east</p>
+                  <p class="errorMsg1">Write me the direction</p>
+
+                  <!--room dimension input x and y -->
+                  <!--Width -->
+    	  					<div class="form-group col-xs-12 col-sm-12 col-md-12 fisrtScreen">
+                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-md-offset-1">
+        							<label for="dimensionsX" class="col-xs-12 col-sm-12col-md-12 control-label"><h5>Width: </h5></label>
+                      <div class="col-xs-8 col-sm-8 col-md-8 col-md-offset-2" >
+
+    								    <input type="number"  min="1" class="x form-control"  id="dimensionsX" placeholder="1">
+                      </div>
+    						    </div>
+                    <!--Height -->
+                    <div class="form-group col-xs-5 col-sm-5 col-md-5 col-md-offset-0">
+                      <label for="dimensionsY" class="col-xs-12 col-sm-12 col-md-12 control-label"><h5>Height:</h5></label>
+                      <div class="col-xs-8 col-sm-8 col-md-8 col-md-offset-2">
+                        <input  type="number"  min="1" max="50"  class="y form-control"   id="dimensionsY" placeholder="1">
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-success " id = "goSecond">NEXT</button>
+              </div>
+
+
+              <!--Ask direction div-->
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 fourthScreen">
+              <input type="textarea" placeholder="N" id="usrMoves" class = "direction">
+            </div>
+            <div class="fourthScreen" >
+              <button type="button" class="btn btn-success" id ="goPlay">PLAY</button>
+            </div>
+
+
+    			</div>
+
+        </div><!--end form column-->
+      </div><!-- end container -->
+
+          <!-- ++++++++++++++++++++++++++++++Where is dirty? and where is yor robot?+++++++++++++++++++++++++++++++++++-->
+      <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1" id ="SecondStep">
+
+          <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1" >
+
+            <div class="singleQuestion col-xs-12 col-sm-12 col-md-12">
+
+              <!--second screen-->
+              <div id="dirt">
+                <h4 >where is dirty?</h4>
+                <p>Click patches of dirt on the room</p>
+              </div>
+
+
+              <!--Third screen-->
+              <div id="Robot">
+                <h4>Where is your Robot?</h4>
+                <p>Click your start point</p>
+              </div>
+
+              <!--last screen-->
+              <div class="afterClean">
+                <h4 >You have <span id="leftDirtP"></span> left</h4>
+
+              </div>
+
+
+
+              <div class="form-group col-xs-12 col-sm-12 col-md-12" id="roomPlace">
+
+              </div>
+              <div id="btns2">
+                <button type="button" class="btn btn-success" id ="goThird">NEXT</button>
+              </div>
+              <div id="btns3">
+                <button type="button" class="btn btn-success" id ="goForth">NEXT</button>
+              </div>
+              <div>
+                <h3 class="allClean">PERFECT!!!!</h3>
+                <h3 class="notClean">Sorry it is still dirty</h3>
+              </div>
+            </div>
+
+
+
+    			</div><!--end form column-->
+
+
+
+
+    		  </div><!-- end container -->
+    	</div><!-- end row -->
+
+
+
+    	<!--js script-->
+    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="script/validate.js"></script>
+
+
+
+   </body>
+
+</html>
