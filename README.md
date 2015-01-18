@@ -1,5 +1,5 @@
 # Robot hoover
-###game : lead you robot hoover to clean your room
+###Lead you robot hoover to clean your room
 
 1. Write the room size
 2. Select the patches of dirt
