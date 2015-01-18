@@ -7,3 +7,5 @@
 4. Give the direction
 
 #[Play now] (http://ginvidi.github.io/robot_hoover/)
+
+[demo source](https://github.com/ginvidi/robot_hoover/tree/gh-pages)
