@@ -1,2 +1,9 @@
-# robot_hoover
-game : lead you robot hoover to clean your room
+# Robot hoover
+###game : lead you robot hoover to clean your room
+
+1. Write the room size
+2. Select the patches of dirt
+3. Place your robot 
+4. Give the direction
+
+#[Play now] (http://ginvidi.github.io/robot_hoover/)
