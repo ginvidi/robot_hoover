@@ -144,7 +144,7 @@ td{
   padding: 0;
   border: 1px solid black;
   width: 30px;
-  /*height: 130px;*/
+  height: 30px;
 
 }
 
@@ -152,31 +152,18 @@ td{
 
 .robotPosition {
   /*background-color:green;*/
-  /*border-radius:50%;*/
-  width: 100%;
-  height:auto;
-	background-image: url('../img/robot.svg');
-	background-repeat: no-repeat;
-  background-position: center; 
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
+  border-radius:50%;
+background-image: url('smiley.gif');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-position: center; 
 
 
 }
 
 .dirtyPatches{
-   width: 100%;
-  height:auto;
-  background-image: url('../img/dirty.svg');
-  background-repeat: no-repeat;
-  background-position: center; 
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-
+  background-color:black;
+  border-radius:20%;
 
 
 }

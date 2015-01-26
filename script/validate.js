@@ -12,6 +12,8 @@ $(document).ready(function () {
     /*room size*/
     roomW = $( "#dimensionsX").val();
     roomH = $( "#dimensionsY").val();
+
+
     //check user data
     if (!roomW || !roomW){
       $( ".errorMsg").css("display", "block");
@@ -40,7 +42,7 @@ $(document).ready(function () {
 
   });
 
-/* selcte robot square */
+/* select robot square */
 $( "#goThird" ).click(function() {
 
   /*change element style*/
@@ -188,15 +190,23 @@ function fillRoom(myroom){
   for (var c = 0; c < myroom.length; c++) {
     for (var r = 0; r < myroom[c].length; r++) {
       if (myroom[c][r] == 2) {
-        $('#roomFloor').getCell(c,r).css("background-color","green");
-        $('#roomFloor').getCell(c,r).css("border-radius","50%");
+        $('#roomFloor').getCell(c,r).addClass("robotPosition");
+        $('#roomFloor').getCell(c,r).removeClass("dirtyPatches");
+
+       // $('#roomFloor').getCell(c,r).css("border-radius","50%");
 
 
       }else if( myroom[c][r] == 1) {
 
-        $('#roomFloor').getCell(c,r).css("background-color","black");
-        $('#roomFloor').getCell(c,r).css("border-radius","10%");
+        $('#roomFloor').getCell(c,r).addClass("dirtyPatches");
+
+       // $('#roomFloor').getCell(c,r).css("background-color","black");
+       // $('#roomFloor').getCell(c,r).css("border-radius","10%");
       } else if ( myroom[c][r] == 0) {
+
+        $('#roomFloor').getCell(c,r).removeClass("robotPosition");
+        $('#roomFloor').getCell(c,r).removeClass("dirtyPatches");
+
 
         $('#roomFloor').getCell(c,r).css("background-color","white");
       }
