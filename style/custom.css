@@ -63,6 +63,11 @@ label h5{
 
 }
 
+input.error{
+  border-color:rgb(255, 42, 42);
+  border-width: 3px;
+
+}
 /*Second step*/
 #SecondStep{
 	display:none;
@@ -167,6 +172,7 @@ td{
 }
 
 .dirtyPatches{
+
    width: 100%;
   height:auto;
   background-image: url('../img/dirty.svg');
@@ -180,3 +186,19 @@ td{
 
 
 }
+
+
+.dirtyPatchesCursor{
+
+	cursor: url(../img/dirty.png), url(../img/dirty.cur),auto;
+
+
+}
+
+.RobotCursor{
+
+	cursor: url(../img/robot.png),  url(../img/robot.cur),auto;
+
+
+}
+

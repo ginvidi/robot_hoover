@@ -105,7 +105,7 @@ $( "#goPlay" ).click(function() {
   if(directions != ""){
   $( "#SecondStep").css("display", "block");
   $( "#FirsrStep").css("display", "none");
-  $("#roomFloor").removeClass("RobotCursor");
+  $("#roomFloor tr td").removeClass("RobotCursor");
   $( "#Robot").css("display", "none");
   $( ".afterClean").css("display", "block");
   $('#btns2').css("display", "none");
