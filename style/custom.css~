@@ -190,7 +190,7 @@ td{
 
 .dirtyPatchesCursor{
 
-	cursor: url(../img/dirty.svg),auto;
+	cursor: url(../img/dirty.png), url(../img/dirty.cur),auto;
 
 
 }

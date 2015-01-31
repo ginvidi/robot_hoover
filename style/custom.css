@@ -155,21 +155,7 @@ td{
 
 
 
-.robotPosition {
-  /*background-color:green;*/
-  /*border-radius:50%;*/
-  width: 100%;
-  height:auto;
-	background-image: url('../img/robot.svg');
-	background-repeat: no-repeat;
-  background-position: center; 
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
 
-
-}
 
 .dirtyPatches{
 
@@ -187,7 +173,21 @@ td{
 
 }
 
+.robotPosition {
+  /*background-color:green;*/
+  /*border-radius:50%;*/
+  width: 100%;
+  height:auto;
+	background-image: url('../img/robot.svg');
+	background-repeat: no-repeat;
+  background-position: center; 
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
 
+
+}
 .dirtyPatchesCursor{
 
 	cursor: url(../img/dirty.png), url(../img/dirty.cur),auto;
