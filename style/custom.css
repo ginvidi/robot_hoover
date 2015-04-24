@@ -46,7 +46,6 @@ label h5{
 }
 
 #goSecond, #goThird,#goForth, #goPlay{
-  width: 33%;
   min-height: 2em;
   font-size: 3em;
   font-weight: bold;
@@ -200,4 +199,13 @@ td{
 	cursor: url(../img/robot.png),  url(../img/robot.cur),auto;
 
 
+}
+
+
+/*Media query*/
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 50%;
+  }
 }
