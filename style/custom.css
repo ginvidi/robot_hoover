@@ -53,7 +53,7 @@ label h5{
   margin-top: 1%;
 }
 /*errors msg*/
-.errorMsg, .errorMsg1{
+.errorMsg, .errorMsg1,.errorMsgNullSize, .errorMsgSmallRoom{
 
 	color:rgb(255, 42, 42);
 	display:none;
@@ -163,7 +163,7 @@ td{
   height:auto;
   background-image: url('../img/dirty.svg');
   background-repeat: no-repeat;
-  background-position: center; 
+  background-position: center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -180,7 +180,7 @@ td{
   height:auto;
 	background-image: url('../img/robot.svg');
 	background-repeat: no-repeat;
-  background-position: center; 
+  background-position: center;
   -webkit-background-size: contain;
   -moz-background-size: contain;
   -o-background-size: contain;
@@ -201,4 +201,3 @@ td{
 
 
 }
-

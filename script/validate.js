@@ -6,7 +6,7 @@ $(document).ready(function () {
 
   /*$( "#dimensionsX" ).focus(function() {
       $( "#dimensionsX" ).keypress(function( event ) {
-        if($.isNumeric($('#dimensionsX').val())){     
+        if($.isNumeric($('#dimensionsX').val())){
           $( ".x").css("border-color", "green");
           $( ".x").css("border-width", "3px");
 
@@ -20,7 +20,7 @@ $(document).ready(function () {
       });
   });
 
-    if($.isNumeric($('#dimensionsY').val())){     
+    if($.isNumeric($('#dimensionsY').val())){
       $( ".y").css("border-color", "green");
       $( ".y").css("border-width", "3px");
 
@@ -31,7 +31,51 @@ $(document).ready(function () {
 
 
     }*/
-    
+    /* +++++++++ ++++++++++++++++++++Button state +++++++++++++++++++++++++++++++++++++++ */
+    /*Disable Enable button next first table size
+    $("#goSecond").prop("disabled",true);
+    function checkSizeTable(inputSquareTable){
+
+      $("#"+inputSquareTable).focusout(function() {
+
+
+        if (($("#dimensionsX").val()>1)&&($("#dimensionsY").val()>1)){
+
+          $("#goSecond").prop("disabled",false);
+
+        }
+      });
+    }
+    checkSizeTable("dimensionsX");
+    checkSizeTable("dimensionsY");*/
+
+
+    /*Disable Enable button next second patch of dirt*/
+   $("#goThird").prop("disabled",true);
+
+
+
+
+      /*$( "#roomFloor tr td" ).click(function() {
+      console.log($( "#roomFloor tr").children().hasClass( "dirtyPatches" ));
+
+
+      if ($( "#roomFloor tr").children().hasClass( "dirtyPatches" )){
+        $("#goThird").prop("disabled",false);
+
+
+      }
+    })
+    $( "#roomFloor tr td" ).click(function() {
+      console.log($( "#roomFloor tr").children().hasClass( "dirtyPatches" ));
+
+
+      if ($( "#roomFloor tr").children().hasClass( "dirtyPatches" )){
+        $("#goForth").prop("disabled",false);
+
+
+      }
+    })*/
 /* +++++++++ ++++++++++++++++++++CLICK FUNCTION +++++++++++++++++++++++++++++++++++++++ */
 /*get h and w of the room*/
   $( "#goSecond" ).click(function() {
@@ -43,16 +87,39 @@ $(document).ready(function () {
 
     //check user data
     if (!roomW || !roomW){
-      $( ".errorMsg").css("display", "block");
+      $( ".errorMsgNullSize").fadeIn( "slow", function() {
+        $(this).css("display", "block");
+      });
+
+      setTimeout(function() {
+        $( ".errorMsg").fadeIn( "slow", function() {
+          $(this).css("display", "block");
+        });
+      }, 500);
+      $( ".errorMsgSmallRoom").css("display", "none");
+
       $( ".x").css("border-color", "rgb(255, 42, 42)");
       $( ".y").css("border-color", "rgb(255, 42, 42)");
 
 
     }
+
+    else if((roomW<2) || (roomW<2)){
+      $( ".errorMsgSmallRoom").fadeIn( "slow", function() {
+        $(this).css("display", "block");
+      });
+      $( ".errorMsg").css("display", "none");
+      $( ".errorMsgNullSize").css("display", "none");
+      $( ".x").css("border-color", "rgb(255, 42, 42)");
+      $( ".y").css("border-color", "rgb(255, 42, 42)");
+    }
+
     else{
       $( "#FirsrStep").css("display", "none");
       $( "#SecondStep").css("display", "block");
       $( ".errorMsg").css("display", "none");
+      $( ".errorMsgSmallRoom").css("display", "none");
+      $( ".errorMsgNullSize").css("display", "none");
       $( ".x").css("border-color", "green");
       $( ".y").css("border-color", "green");
 
@@ -80,19 +147,23 @@ $( "#goThird" ).click(function() {
   $('#goThird').attr('id', 'goForth');
   $('#btns2').css("display", "none");
   $('#btns3').css("display", "block");
-
 });
 
 
 /* give directions */
 $( "#goForth" ).click(function() {
+  if ($( "#roomFloor tr td" ).hasClass( "robotPosition" )){
+    /*change element style*/
+    $( "#SecondStep").css("display", "none");
+    $( "#FirsrStep").css("display", "block");
+    $( ".fisrtScreen").css("display", "none");
+    $( ".fourthScreen").css("display", "block");
+    $('#goForth').attr('id', 'goPlay');
+  }
+  else {
+    $('.whrRobot').modal('.whrRobot');
+  }
 
-  /*change element style*/
-  $( "#SecondStep").css("display", "none");
-  $( "#FirsrStep").css("display", "block");
-  $( ".fisrtScreen").css("display", "none");
-  $( ".fourthScreen").css("display", "block");
-  $('#goForth').attr('id', 'goPlay');
 
 });
 
@@ -127,6 +198,21 @@ $( "#goPlay" ).click(function() {
 
 
 /*  ++++++++++++++++++++++++++++++++++++ FUNCTION +++++++++++++++++++++++++++++++++++++  */
+
+/*Enable second and third botton function*/
+function enableButton(className, buttonID){
+  setTimeout(function() {
+    if ($( "#roomFloor tr").children().hasClass(className)){
+      $("#"+buttonID).prop("disabled",false);
+      console.log(buttonID+" "+$( "#roomFloor tr").children().hasClass(className));
+    }
+    else {
+      $("#"+buttonID).prop("disabled",true);
+
+    }
+  }, 500);
+}
+
 
 /*not allow to right different input in direction input*/
 $('#usrMoves').keyup(function() {
@@ -203,9 +289,8 @@ function clean(h, w, room, directions){
         break;
 
       }
+
       fillRoom (room);
-
-
     }
 }
 
@@ -218,7 +303,10 @@ function fillRoom(myroom){
   };
 
   for (var c = 0; c < myroom.length; c++) {
+
+
     for (var r = 0; r < myroom[c].length; r++) {
+
       if (myroom[c][r] == 2) {
         $('#roomFloor').getCell(c,r).addClass("robotPosition");
         $('#roomFloor').getCell(c,r).removeClass("dirtyPatches");
@@ -239,10 +327,15 @@ function fillRoom(myroom){
 
 
         $('#roomFloor').getCell(c,r).css("background-color","white");
+
+
       }
 
+
     }
+
   }
+
   leftDirty();
 }
 
@@ -282,15 +375,17 @@ function createRoom (h,w){
   var cellH = 100/h;
 
   //console.log("h"+ h + "w" + w +"px " + px + "py " + py + "dirty"+ dirty + "cella" + cellW);
-  $("#roomPlace").html('<table id= "roomFloor" class= "dirtyPatchesCursor">');
+  $("#roomPlace").html('<table id= "roomFloor" class= "dirtyPatchesCursor" style  = "border: 2px solid green;" >');
   for (var i = 0; i < h; i++) {
 
-    $("#roomPlace table").append('<tr class= "'+ i +'" style = "border: 1px solid black;" >');
+    $("#roomPlace table").append('<tr class= "'+ i +'" style = "border: 0px solid transparent;" >');
+
+
 
     for (var j = 0; j < w; j++) {
 
 
-      $("#roomPlace table ." + i).append('<td class="clear" style = "border: 1px solid black;" ></td>');
+      $("#roomPlace table ." + i).append('<td class="clear" style = "border: 0px solid black;" ></td>');
     }
     $("#roomPlace").append('</tr>');
   }
@@ -312,9 +407,14 @@ function createRoom (h,w){
     var row = $(this).parent().parent().children().index($(this).parent());
 
 
+
     //draw dplatches of dirt
     if($("#goThird").length)
     {
+      // call the function to enable if there are dirty patches
+      enableButton("dirtyPatches","goThird");
+
+
       $( this ).toggleClass( "dirtyPatches" );
       if(room_matrix[col][row] != 0) { room_matrix[col][row] = 1; }
       else { room_matrix[col][row] = 1; }
@@ -324,6 +424,7 @@ function createRoom (h,w){
 
     //draw robot
     else if($("#goForth").length){
+
       $( ".robotPosition" ).removeClass( "robotPosition" );
       $( this ).toggleClass( "robotPosition" );
 
@@ -340,6 +441,7 @@ function createRoom (h,w){
       robotPosition = [col, row];
 
     }
+
 
   });
 

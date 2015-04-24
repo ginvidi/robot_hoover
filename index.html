@@ -6,6 +6,7 @@
             <meta name="keywords" content="clean, game, robot">
             <meta name="description" content="lead your Robot to clean you room">
     	<meta name="author" content="Ginevra Diana">
+      <meta name="viewport" content="width=device-width">
     	<meta charset="UTF-8">
 
         <!--Style-->
@@ -21,7 +22,8 @@
 
 
 
-   <body>
+   <body style="width: 100%;align-content: center;">
+     <div class="container-fluid">
     	<div  class="row">
 
         <!-- ++++++++++++++++++++++++++++++How big is the room?+++++++++++++++++++++++++++++++++++-->
@@ -40,7 +42,9 @@
     					 	<h4 class="fisrtScreen" >How big is the room?</h4>
                  <h4 class="fourthScreen" >Give me the direction</h4>
 
-                  <p class="errorMsg">You can use just number</p>
+                 <p class="errorMsgNullSize">Give the room size, do not be Lazy!</p>
+                  <p class="errorMsg">You can use just number!</p>
+                  <p class="errorMsgSmallRoom">I think your room is too small</p>
                   <p class="fourthScreen">You can use just the letter N-noth, S-south, W-west, E-east</p>
                   <p class="errorMsg1">Write me the direction</p>
 
@@ -114,8 +118,26 @@
                 <button type="button" class="btn btn-success" id ="goThird">NEXT</button>
               </div>
               <div id="btns3">
-                <button type="button" class="btn btn-success" id ="goForth">NEXT</button>
+                <button type="button" class="btn btn-success" id ="goForth" data-toggle="modal" data-target=".bs-example-modal-sm">NEXT</button>
               </div>
+              <!-- Small modal -->
+
+
+              <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="mySmallModalLabel">Where is your robot?
+                        <a class="anchorjs-link" href="#mySmallModalLabel">
+                          <span class="anchorjs-icon"></span></a></h4>
+                    </div>
+                    Click on the room to position your robot
+                  </div>
+                </div>
+              </div>
+
               <div>
                 <h3 class="allClean">PERFECT!!!!</h3>
                 <h3 class="notClean">Sorry it is still dirty</h3>
@@ -131,11 +153,12 @@
 
     		  </div><!-- end container -->
     	</div><!-- end row -->
-
+    </div><!-- end container -->
 
 
     	<!--js script-->
     	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="lib/bootstrap.min.js"></script>
       <script src="script/validate.js"></script>
 
 
