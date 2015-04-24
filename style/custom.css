@@ -208,4 +208,12 @@ td{
   body {
     font-size: 50%;
   }
+
+  .col-xs-5 {
+    padding: 5%;
+  }
+
+  .col-xs-12 {
+    padding: 3%;
+  }
 }
