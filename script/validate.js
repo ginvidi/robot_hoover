@@ -152,23 +152,28 @@ $( "#goThird" ).click(function() {
 
 /* give directions */
 $( "#goForth" ).click(function() {
+
   if ($( "#roomFloor tr td" ).hasClass( "robotPosition" )){
     /*change element style*/
+
     $( "#SecondStep").css("display", "none");
     $( "#FirsrStep").css("display", "block");
     $( ".fisrtScreen").css("display", "none");
     $( ".fourthScreen").css("display", "block");
     $('#goForth').attr('id', 'goPlay');
+
+
   }
   else {
-    $('.whrRobot').modal('.whrRobot');
+    console.log($( "#roomFloor tr td" ).hasClass( "robotPosition" ));
+    //$('.whrRobot').modal(".whrRobot");
   }
-
 
 });
 
 /* See you moves on the table*/
 $( "#goPlay" ).click(function() {
+
 
   /*change element style*/
   //get directionstring
@@ -403,13 +408,24 @@ function createRoom (h,w){
 
   $( "#roomFloor tr td" ).click(function() {
 
+
+
+
     var col = $(this).parent().children().index($(this));
     var row = $(this).parent().parent().children().index($(this).parent());
 
+    if($(".afterClean").is(":visible")){
+      console.log("test");
+      $( "#roomFloor tr td" ).click(function(event) {
+        event.preventDefault();
 
+      })
+
+
+    }
 
     //draw dplatches of dirt
-    if($("#goThird").length)
+    else if($("#goThird").length)
     {
       // call the function to enable if there are dirty patches
       enableButton("dirtyPatches","goThird");
@@ -441,7 +457,6 @@ function createRoom (h,w){
       robotPosition = [col, row];
 
     }
-
 
   });
 
