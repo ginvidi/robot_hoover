@@ -86,7 +86,7 @@ $(document).ready(function () {
     roomH = $( "#dimensionsY").val();
 
     //check user data
-    if (!roomW || !roomW){
+    if (!roomW || !roomH){
       $( ".errorMsgNullSize").fadeIn( "slow", function() {
         $(this).css("display", "block");
       });
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
     }
 
-    else if((roomW<2) || (roomW<2)){
+    else if((roomW<2) || (roomH<2)){
       $( ".errorMsgSmallRoom").fadeIn( "slow", function() {
         $(this).css("display", "block");
       });
@@ -414,14 +414,14 @@ function createRoom (h,w){
     var col = $(this).parent().children().index($(this));
     var row = $(this).parent().parent().children().index($(this).parent());
 
+
+    // block click on table after clean
     if($(".afterClean").is(":visible")){
       console.log("test");
       $( "#roomFloor tr td" ).click(function(event) {
         event.preventDefault();
 
       })
-
-
     }
 
     //draw dplatches of dirt
@@ -462,10 +462,5 @@ function createRoom (h,w){
 
 
   };
-
-
-
-
-
 
 });
