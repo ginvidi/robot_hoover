@@ -113,6 +113,15 @@ $(document).ready(function () {
       $( ".x").css("border-color", "rgb(255, 42, 42)");
       $( ".y").css("border-color", "rgb(255, 42, 42)");
     }
+    else if((roomW>6) || (roomH>6)){
+      $( ".errorMsgSmallRoom").fadeIn( "slow", function() {
+        $(this).css("display", "block");
+      });
+      $( ".errorMsg").css("display", "none");
+      $( ".errorMsgNullSize").css("display", "none");
+      $( ".x").css("border-color", "rgb(255, 42, 42)");
+      $( ".y").css("border-color", "rgb(255, 42, 42)");
+    }
 
     else{
       $( "#FirsrStep").css("display", "none");
@@ -152,10 +161,10 @@ $( "#goThird" ).click(function() {
 
 /* give directions */
 $( "#goForth" ).click(function() {
-
+  $('.whrRobot').modal('show');
   if ($( "#roomFloor tr td" ).hasClass( "robotPosition" )){
     /*change element style*/
-
+    $('.whrRobot').modal('hide');
     $( "#SecondStep").css("display", "none");
     $( "#FirsrStep").css("display", "block");
     $( ".fisrtScreen").css("display", "none");
@@ -390,7 +399,7 @@ function createRoom (h,w){
     for (var j = 0; j < w; j++) {
 
 
-      $("#roomPlace table ." + i).append('<td class="clear" style = "border: 0px solid black;" ></td>');
+      $("#roomPlace table ." + i).append('<td class="clear" style = "border: 1px solid black;" ></td>');
     }
     $("#roomPlace").append('</tr>');
   }
