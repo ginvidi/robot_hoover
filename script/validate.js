@@ -182,7 +182,7 @@ $( "#goForth" ).click(function() {
 
 /* See you moves on the table*/
 $( "#goPlay" ).click(function() {
-
+  $( "#btns5").css("display", "block");
 
   /*change element style*/
   //get directionstring
@@ -205,9 +205,10 @@ $( "#goPlay" ).click(function() {
   }
 });
 
-
-
-
+$( "#playAgain" ).click(function() {
+  location.reload();
+  $( "#btns5").css("display", "none");
+});
 
 
 

@@ -45,7 +45,7 @@ label h5{
 
 }
 
-#goSecond, #goThird,#goForth, #goPlay{
+#goSecond, #goThird,#goForth, #goPlay,#playAgain{
   min-height: 2em;
   font-size: 3em;
   font-weight: bold;
@@ -85,7 +85,7 @@ input.error{
 
 }
 
-#btns3{
+#btns3,#btns5{
 	display:none;
 
 }
