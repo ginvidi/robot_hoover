@@ -114,9 +114,11 @@ $(document).ready(function () {
       $( ".y").css("border-color", "rgb(255, 42, 42)");
     }
     else if((roomW>6) || (roomH>6)){
-      $( ".errorMsgSmallRoom").fadeIn( "slow", function() {
+      
+      $( ".errorMsgBigRoom").fadeIn( "slow", function() {
         $(this).css("display", "block");
       });
+      $( ".errorMsgSmallRoom").css("display", "none");
       $( ".errorMsg").css("display", "none");
       $( ".errorMsgNullSize").css("display", "none");
       $( ".x").css("border-color", "rgb(255, 42, 42)");
@@ -269,14 +271,17 @@ function clean(h, w, room, directions){
 
       switch (direction) {
         case "S":
+
           room[robCol][robRow] = 0;
           if ( robRow < room[0].length -1 ){
             robRow++;
           }
         room[robCol][robRow] = 2;
+
         break;
 
         case "N":
+
           room[robCol][robRow] = 0;
           if ( robRow > 0){
             robRow--;
@@ -286,26 +291,33 @@ function clean(h, w, room, directions){
         break;
 
         case "W":
+
           room[robCol][robRow] = 0;
           if ( robCol > 0 ){
             robCol--;
           }
         room[robCol][robRow] = 2;
 
+
+
         break;
 
         case "E":
+
           room[robCol][robRow] = 0;
           if ( robCol < room.length - 1){
             robCol++;
           }
-        room[robCol][robRow] = 2;
+          room[robCol][robRow] = 2;
+
+
 
         break;
 
       }
-
+      setTimeout(function(){
       fillRoom (room);
+    }, 2000);
     }
 }
 
@@ -323,21 +335,26 @@ function fillRoom(myroom){
     for (var r = 0; r < myroom[c].length; r++) {
 
       if (myroom[c][r] == 2) {
-        $('#roomFloor').getCell(c,r).addClass("robotPosition");
-        $('#roomFloor').getCell(c,r).removeClass("dirtyPatches");
+
+          $('#roomFloor').getCell(c,r).addClass("robotPosition").delay( 2000 ).fadeIn( 300 );
+          $('#roomFloor').getCell(c,r).removeClass("dirtyPatches");
+
+
 
        // $('#roomFloor').getCell(c,r).css("border-radius","50%");
 
 
       }else if( myroom[c][r] == 1) {
 
-        $('#roomFloor').getCell(c,r).addClass("dirtyPatches");
+          $('#roomFloor').getCell(c,r).addClass("dirtyPatches");
+
+
 
        // $('#roomFloor').getCell(c,r).css("background-color","black");
        // $('#roomFloor').getCell(c,r).css("border-radius","10%");
       } else if ( myroom[c][r] == 0) {
 
-        $('#roomFloor').getCell(c,r).removeClass("robotPosition");
+        $('#roomFloor').getCell(c,r).removeClass("robotPosition").delay( 2000 ).fadeIn( 300 );
         $('#roomFloor').getCell(c,r).removeClass("dirtyPatches");
 
 

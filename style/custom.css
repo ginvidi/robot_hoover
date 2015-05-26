@@ -52,7 +52,7 @@ label h5{
   margin-top: 1%;
 }
 /*errors msg*/
-.errorMsg, .errorMsg1,.errorMsgNullSize, .errorMsgSmallRoom{
+.errorMsg, .errorMsg1,.errorMsgNullSize, .errorMsgSmallRoom, .errorMsgBigRoom{
 
 	color:rgb(255, 42, 42);
 	display:none;
