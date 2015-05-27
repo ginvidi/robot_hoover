@@ -269,23 +269,27 @@ function clean(h, w, room, directions){
 
     directions = directions.toUpperCase();
 
-    for (var i = 0; i < directions.length; i++) {
+    moveRobot(room, directions, 0);
 
-      (function(direction, i) {
+    /*for (var i = 0; i < directions.length; i++) {
+
+      (function(direction, current) {
 
         setTimeout(function(){
-          var complete = (i >= directions.length - 1);
+          var complete = (current >= directions.length - 1);
 
           moveRobot(room, direction);
           fillRoom (room, complete);
 
-        }, delay * i);
+        }, delay * current);
 
       })(directions[i], i);
-    }
+    }*/
 }
 
-function moveRobot(room, direction) {
+function moveRobot(room,  directions, current) {
+
+  var direction = directions[current];
 
   room[robCol][robRow] = 0;
 
@@ -330,10 +334,21 @@ function moveRobot(room, direction) {
     break;
 
   }
+
+  fillRoom (room);
+
+  current = current + 1;
+
+  if (current < directions.length) {
+
+    setTimeout(function () {
+      moveRobot(room, directions, current);
+    }, 1000);
+  }
 }
 
 /*fill the table*/
-function fillRoom(myroom, complete){
+function fillRoom(myroom){
 
   jQuery.fn.getCell = function(c,r){
     return jQuery( this[0].rows[r].cells[c] );
@@ -378,7 +393,7 @@ function fillRoom(myroom, complete){
 
   }
 
-  if (complete) { leftDirty(); }
+  leftDirty();
 }
 
 
