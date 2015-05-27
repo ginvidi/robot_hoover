@@ -114,7 +114,7 @@ $(document).ready(function () {
       $( ".y").css("border-color", "rgb(255, 42, 42)");
     }
     else if((roomW>6) || (roomH>6)){
-      
+
       $( ".errorMsgBigRoom").fadeIn( "slow", function() {
         $(this).css("display", "block");
       });
@@ -262,68 +262,78 @@ function generateRoom(h,w){
 /*change matrix with direction*/
 function clean(h, w, room, directions){
 
+    var delay = 1000;
+
     robCol = robotPosition[0];
     robRow = robotPosition[1];
 
+    directions = directions.toUpperCase();
+
     for (var i = 0; i < directions.length; i++) {
 
-      direction = directions[i].toUpperCase();
+      (function(direction, i) {
 
-      switch (direction) {
-        case "S":
+        setTimeout(function(){
+          var complete = (i >= directions.length - 1);
 
-          room[robCol][robRow] = 0;
-          if ( robRow < room[0].length -1 ){
-            robRow++;
-          }
-        room[robCol][robRow] = 2;
+          moveRobot(room, direction);
+          fillRoom (room, complete);
 
-        break;
+        }, delay * i);
 
-        case "N":
-
-          room[robCol][robRow] = 0;
-          if ( robRow > 0){
-            robRow--;
-          }
-        room[robCol][robRow] = 2;
-
-        break;
-
-        case "W":
-
-          room[robCol][robRow] = 0;
-          if ( robCol > 0 ){
-            robCol--;
-          }
-        room[robCol][robRow] = 2;
-
-
-
-        break;
-
-        case "E":
-
-          room[robCol][robRow] = 0;
-          if ( robCol < room.length - 1){
-            robCol++;
-          }
-          room[robCol][robRow] = 2;
-
-
-
-        break;
-
-      }
-      setTimeout(function(){
-      fillRoom (room);
-    }, 2000);
+      })(directions[i], i);
     }
 }
 
-/*fill the table*/
-function fillRoom(myroom){
+function moveRobot(room, direction) {
 
+  room[robCol][robRow] = 0;
+
+  switch (direction) {
+    case "S":
+
+      if ( robRow < room[0].length -1 ){
+        robRow++;
+      }
+      room[robCol][robRow] = 2;
+
+    break;
+
+
+    case "N":
+
+      if ( robRow > 0){
+        robRow--;
+      }
+      room[robCol][robRow] = 2;
+
+    break;
+
+
+    case "W":
+
+      if ( robCol > 0 ){
+        robCol--;
+      }
+      room[robCol][robRow] = 2;
+
+    break;
+
+
+    case "E":
+
+      if ( robCol < room.length - 1){
+        robCol++;
+      }
+      room[robCol][robRow] = 2;
+
+    break;
+
+  }
+}
+
+/*fill the table*/
+function fillRoom(myroom, complete){
 
   jQuery.fn.getCell = function(c,r){
     return jQuery( this[0].rows[r].cells[c] );
@@ -368,7 +378,7 @@ function fillRoom(myroom){
 
   }
 
-  leftDirty();
+  if (complete) { leftDirty(); }
 }
 
 
