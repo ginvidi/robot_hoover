@@ -114,7 +114,7 @@ $(document).ready(function () {
       $( ".y").css("border-color", "rgb(255, 42, 42)");
     }
     else if((roomW>6) || (roomH>6)){
-      
+
       $( ".errorMsgBigRoom").fadeIn( "slow", function() {
         $(this).css("display", "block");
       });
@@ -262,68 +262,93 @@ function generateRoom(h,w){
 /*change matrix with direction*/
 function clean(h, w, room, directions){
 
+    var delay = 1000;
+
     robCol = robotPosition[0];
     robRow = robotPosition[1];
 
-    for (var i = 0; i < directions.length; i++) {
+    directions = directions.toUpperCase();
 
-      direction = directions[i].toUpperCase();
+    moveRobot(room, directions, 0);
 
-      switch (direction) {
-        case "S":
+    /*for (var i = 0; i < directions.length; i++) {
 
-          room[robCol][robRow] = 0;
-          if ( robRow < room[0].length -1 ){
-            robRow++;
-          }
-        room[robCol][robRow] = 2;
+      (function(direction, current) {
 
-        break;
+        setTimeout(function(){
+          var complete = (current >= directions.length - 1);
 
-        case "N":
+          moveRobot(room, direction);
+          fillRoom (room, complete);
 
-          room[robCol][robRow] = 0;
-          if ( robRow > 0){
-            robRow--;
-          }
-        room[robCol][robRow] = 2;
+        }, delay * current);
 
-        break;
+      })(directions[i], i);
+    }*/
+}
 
-        case "W":
+function moveRobot(room,  directions, current) {
 
-          room[robCol][robRow] = 0;
-          if ( robCol > 0 ){
-            robCol--;
-          }
-        room[robCol][robRow] = 2;
+  var direction = directions[current];
 
+  room[robCol][robRow] = 0;
 
+  switch (direction) {
+    case "S":
 
-        break;
-
-        case "E":
-
-          room[robCol][robRow] = 0;
-          if ( robCol < room.length - 1){
-            robCol++;
-          }
-          room[robCol][robRow] = 2;
-
-
-
-        break;
-
+      if ( robRow < room[0].length -1 ){
+        robRow++;
       }
-      setTimeout(function(){
-      fillRoom (room);
-    }, 2000);
-    }
+      room[robCol][robRow] = 2;
+
+    break;
+
+
+    case "N":
+
+      if ( robRow > 0){
+        robRow--;
+      }
+      room[robCol][robRow] = 2;
+
+    break;
+
+
+    case "W":
+
+      if ( robCol > 0 ){
+        robCol--;
+      }
+      room[robCol][robRow] = 2;
+
+    break;
+
+
+    case "E":
+
+      if ( robCol < room.length - 1){
+        robCol++;
+      }
+      room[robCol][robRow] = 2;
+
+    break;
+
+  }
+
+  fillRoom (room);
+
+  current = current + 1;
+
+  if (current < directions.length) {
+
+    setTimeout(function () {
+      moveRobot(room, directions, current);
+    }, 1000);
+  }
 }
 
 /*fill the table*/
 function fillRoom(myroom){
-
 
   jQuery.fn.getCell = function(c,r){
     return jQuery( this[0].rows[r].cells[c] );
